@@ -2,7 +2,7 @@ from django.urls import path, include
 
 from exam_prep_one.web_basic.views import home_page, \
     album_add, album_edit, album_delete, album_details, \
-    profile_details, profile_delete
+    profile_details, profile_delete, profile_edit
 
 urlpatterns = [
     # HOME PAGE
@@ -20,5 +20,6 @@ urlpatterns = [
     path("profile/", include([
         path("details/", profile_details, name="profile_details"),
         path("delete/", profile_delete, name="profile_delete"),
+        path("edit/", profile_edit, name="profile_edit"),
     ])),
 ]

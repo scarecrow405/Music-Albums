@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+    <style>
+        .edit-profile {
+            width: 150px;
+            height: 50px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            display: inline;
+            align-items: center;
+            justify-content: center;
+            background-color: #1b2845;
+            background-image: linear-gradient(315deg, #45a29e 0%, #0d324d 74%);
+            background-size: 200% 100%;
+            background-position: left;
+            background-repeat: no-repeat;
+            transition: 500ms;
+            color: white;
+            font-family: "Lato", serif;
+            font-size: 20px;
+            margin-bottom: 5px;
+            margin-top: 20px;
+        }
+    </style>
+
+    <section class="editPage">
+        <form method="post" action="{% url 'profile_edit' %}">
+            <fieldset>
+                <legend>Edit Profile</legend>
+                <div class="container">
+                    {{ profile_form }}
+
+                    {% csrf_token %}
+                    <button class="edit-profile" type="submit" style="">Edit Profile</button>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+
+{% endblock %}

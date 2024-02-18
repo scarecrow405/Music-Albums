@@ -4,8 +4,8 @@ body {
 }
 
 .container-inline {
-  margin: 1rem;
-  padding: 2rem 2rem;
+    margin: 1rem;
+    padding: 2rem 2rem;
 
 }
 
@@ -77,6 +77,7 @@ nav a:hover {
     margin: 10px;
 
 }
+
 
 #welcomePage img {
     width: 80%

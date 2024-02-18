@@ -121,7 +121,7 @@ def album_delete(request, pk):
 
 # PROFILE -----------
 def profile_details(request):
-    profile = Profile.objects.first()
+    profile = get_profile()
     albums_len = Album.objects.count()
 
     context = {
@@ -131,6 +131,25 @@ def profile_details(request):
 
     return render(
         request, "profiles/profile-details.html", context)
+
+
+def profile_edit(request):
+    profile = get_profile()
+    profile_form = ProfileForm(instance=profile)
+
+    if request.method == "POST":
+        profile_form = ProfileForm(request.POST, instance=profile)
+
+        if profile_form.is_valid():
+            profile_form.save()
+            return redirect('profile_details')
+
+    context = {
+        "profile": profile,
+        "profile_form": profile_form
+    }
+
+    return render(request, "profiles/profile-edit.html", context)
 
 
 def profile_delete(request):

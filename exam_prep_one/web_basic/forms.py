@@ -7,15 +7,23 @@ class ProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.put_placeholders()
+        self.put_labels()
 
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = "__all__"
 
     def put_placeholders(self):
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
         self.fields['age'].widget.attrs['placeholder'] = 'Age'
+        self.fields['profile_picture'].widget.attrs['placeholder'] = 'Profile Picture URL'
+
+    def put_labels(self):
+        self.fields['username'].label = 'Username'
+        self.fields['email'].label = 'Email'
+        self.fields['age'].label = 'Age'
+        self.fields['profile_picture'].label = 'Profile Picture URL'
 
 
 class AlbumForm(forms.ModelForm):

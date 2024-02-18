@@ -5,8 +5,13 @@
     <section id="detailsPage">
         <div class="wrapper">
             <div class="profilePage">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                     alt="Profile Image">
+                {% if profile.profile_picture %}
+                    <img src="{{ profile.profile_picture }}"
+                         alt="Profile Image">
+                {% else %}
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                         alt="Profile Image">
+                {% endif %}
             </div>
 
             <div class="profileText">
@@ -21,6 +26,7 @@
 
             <div class="actionBtn">
                 <!-- Button for Deleting the Profile -->
+                <a href="{% url 'profile_edit' %}" class="edit">Edit</a>
                 <a href="{% url 'profile_delete' %}" class="remove">Delete</a>
             </div>
 
